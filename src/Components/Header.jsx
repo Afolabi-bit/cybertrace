@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import LocationCard from "./LocationCard";
+import AppContext from "../store/AppContext";
 
-const Header = ({ onSearch, location }) => {
+const Header = () => {
+	const { handleSetIP } = useContext(AppContext);
 	const inputRef = useRef();
 
 	function handleSubmit(e) {
@@ -10,9 +12,8 @@ const Header = ({ onSearch, location }) => {
 		let ip = inputRef.current.value.trim();
 
 		if (ip) {
-			onSearch(ip);
+			handleSetIP(ip);
 		}
-		console.log("submitted");
 	}
 	return (
 		<header className="w-full h-[300px] bg-mobile-pattern ">
@@ -38,7 +39,7 @@ const Header = ({ onSearch, location }) => {
 						/>
 					</button>
 				</form>
-				<LocationCard location={location} />
+				<LocationCard />
 			</div>
 		</header>
 	);

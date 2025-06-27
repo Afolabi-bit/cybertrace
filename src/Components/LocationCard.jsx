@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import InfoCardSkeleton from "./CardSkeleton";
+import AppContext from "../store/AppContext";
 
-const LocationCard = ({ location }) => {
+const LocationCard = () => {
+	const { location } = useContext(AppContext);
 	const dataIsFetched = !!Object.keys(location).length;
 
 	return (
@@ -23,7 +25,7 @@ const LocationCard = ({ location }) => {
 							location
 						</p>
 						<p className="font-[500] text-[20px] leading-[24px] text-center tracking-[-0.178571px] text-[#2C2C2C] ">
-							{`${location?.location.region}, ${location?.location.country} ${location?.location.geonameId}`}
+							{`${location?.region}, ${location?.country} ${location?.geonameId}`}
 						</p>
 					</div>
 					<div className="mb-[24px]">
@@ -31,7 +33,7 @@ const LocationCard = ({ location }) => {
 							timezone
 						</p>
 						<p className="font-[500] text-[20px] leading-[24px] text-center tracking-[-0.178571px] text-[#2C2C2C] ">
-							{`UTC${location?.location.timezone}`}
+							{`UTC${location?.timezone}`}
 						</p>
 					</div>
 					<div className="mb-[24px]">
