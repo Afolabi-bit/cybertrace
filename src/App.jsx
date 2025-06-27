@@ -1,20 +1,44 @@
 import Header from "./Components/Header";
 import MapSection from "./Components/MapSection";
 import "leaflet/dist/leaflet.css";
-import MapView from "./MapView";
+import { useState, useEffect } from "react";
 
 function App() {
-	const location = {
-		latitude: 7.3775,
-		longitude: 3.947,
-		city: "Ibadan",
-		region: "Oyo State",
-		country: "Nigeria",
-	};
+	const [location, setLocation] = useState({});
+	const [ipAddress, setIpAddress] = useState("102.89.75.202");
+
+	const apiKey = import.meta.env.VITE_API_KEY;
+
+	useEffect(() => {
+		async function fetchLocation() {
+			const response = await fetch(
+				`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`,
+			);
+
+			if (!response.ok) {
+				return;
+			} else {
+				const data = await response.json();
+				setLocation(data);
+			}
+		}
+
+		fetchLocation();
+	}, [ipAddress]);
+
 	return (
 		<>
-			<Header />
-			<MapSection />
+			<Header
+				onSearch={setIpAddress}
+				location={location}
+			/>
+			<MapSection
+				coords={{
+					latitude: location.location?.lat,
+					longitude: location.location?.lng,
+					region: location.location?.region,
+				}}
+			/>
 		</>
 	);
 }

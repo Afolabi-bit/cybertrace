@@ -1,30 +1,7 @@
 import { useEffect, useState } from "react";
 import InfoCardSkeleton from "./CardSkeleton";
 
-const LocationCard = () => {
-	const [location, setLocation] = useState({});
-	const [ipAddress, setIpAddress] = useState("102.89.75.202");
-
-	const apiKey = import.meta.env.VITE_API_KEY;
-
-	useEffect(() => {
-		async function fetchLocation() {
-			const response = await fetch(
-				`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${ipAddress}`,
-			);
-
-			if (!response.ok) {
-				return;
-			} else {
-				const data = await response.json();
-				setLocation(data);
-				console.log(data);
-			}
-		}
-
-		fetchLocation();
-	}, []);
-
+const LocationCard = ({ location }) => {
 	const dataIsFetched = !!Object.keys(location).length;
 
 	return (

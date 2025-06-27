@@ -1,14 +1,31 @@
+import { useRef } from "react";
 import LocationCard from "./LocationCard";
 
-const Header = () => {
+const Header = ({ onSearch, location }) => {
+	const inputRef = useRef();
+
+	function handleSubmit(e) {
+		e.preventDefault();
+
+		let ip = inputRef.current.value.trim();
+
+		if (ip) {
+			onSearch(ip);
+		}
+		console.log("submitted");
+	}
 	return (
 		<header className="w-full h-[300px] bg-mobile-pattern ">
 			<div className="container pt-[26px] relative ">
 				<h1 className="text-[26px] leading-[30px] text-center tracking-[-0.232143px] text-white font-[500] ">
 					CyberTrace Tracker
 				</h1>
-				<form className="mt-[29px] w-full h-[58px] shadow-soft rounded-[15px] bg-white flex">
+				<form
+					onSubmit={handleSubmit}
+					className="mt-[29px] w-full h-[58px] shadow-soft rounded-[15px] bg-white flex"
+				>
 					<input
+						ref={inputRef}
 						type="text"
 						className="rounded-tl-[15px] rounded-bl-[15px] w-[calc(100%-58px)] pl-[24px] font-[400] placeholder:font-[400] text-[18px] placeholder:text-[18px] leading-[21px] placeholder:leading-[21px] text-[#2C2C2C] placeholder:text-[#2C2C2C] outline-none "
 						placeholder="Enter IP address"
@@ -21,7 +38,7 @@ const Header = () => {
 						/>
 					</button>
 				</form>
-				<LocationCard />
+				<LocationCard location={location} />
 			</div>
 		</header>
 	);
