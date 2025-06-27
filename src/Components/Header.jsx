@@ -16,14 +16,14 @@ const Header = () => {
 		}
 	}
 	return (
-		<header className="w-full h-[300px] bg-mobile-pattern ">
-			<div className="container pt-[26px] relative ">
+		<header className="w-full h-[300px] bg-mobile-pattern bg-no-repeat md:bg-desktop-pattern md:h-[350px] bg-cover">
+			<div className="container pt-[26px] relative md:pt-[51px] ">
 				<h1 className="text-[26px] leading-[30px] text-center tracking-[-0.232143px] text-white font-[500] ">
 					CyberTrace Tracker
 				</h1>
 				<form
 					onSubmit={handleSubmit}
-					className="mt-[29px] w-full h-[58px] shadow-soft rounded-[15px] bg-white flex"
+					className="mt-[29px] w-full h-[58px] shadow-soft rounded-[15px] bg-white flex md:mt-[39px]"
 				>
 					<input
 						ref={inputRef}

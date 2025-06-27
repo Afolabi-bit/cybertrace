@@ -31,7 +31,7 @@ const MapView = ({ coords }) => {
 	const position = [latitude || 7.3775, longitude || 3.947]; // fallback to Ibadan
 
 	return (
-		<div className="h-[600px] w-full">
+		<div className="h-full w-full">
 			<MapContainer
 				center={position}
 				zoom={13}

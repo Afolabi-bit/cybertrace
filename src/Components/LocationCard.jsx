@@ -3,11 +3,10 @@ import InfoCardSkeleton from "./CardSkeleton";
 import AppContext from "../store/AppContext";
 
 const LocationCard = () => {
-	const { location } = useContext(AppContext);
-	const dataIsFetched = !!Object.keys(location).length;
+	const { location, dataIsFetched } = useContext(AppContext);
 
 	return (
-		<div className="w-full h-[294px] bg-white rounded-[15px] shadow-soft absolute left-0 top-[167px] pt-[26px] z-10">
+		<div className="w-full h-[294px] bg-white rounded-[15px] shadow-soft absolute left-0 top-[167px] pt-[26px] md:top-[217px] md:h-[310px] z-10">
 			{!dataIsFetched && <InfoCardSkeleton />}
 			{dataIsFetched && (
 				<div>
@@ -40,7 +39,7 @@ const LocationCard = () => {
 						<p className="font-bold text-[10px] leading-[12px] text-center tracking-[1.45833px] uppercase text-[#2C2C2C] mix-blend-normal text-opacity-50 mb-[7px]">
 							isp
 						</p>
-						<p className="font-[500] text-[20px] leading-[24px] text-center tracking-[-0.178571px] text-[#2C2C2C] truncate w-[280px] mx-auto  ">
+						<p className="font-[500] text-[20px] leading-[24px] text-center tracking-[-0.178571px] text-[#2C2C2C] truncate w-[280px] mx-auto md:w-[320px] ">
 							{location?.isp || "Unresolved"}
 						</p>
 					</div>

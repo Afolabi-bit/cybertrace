@@ -7,10 +7,12 @@ export default {
 				center: true,
 				screens: {
 					sm: "327px",
+					md: "427px",
 				},
 			},
 			backgroundImage: {
 				"mobile-pattern": "url('/images/pattern-bg-mobile.png')",
+				"desktop-pattern": "url('/images/pattern-bg-desktop.png')",
 			},
 			fontFamily: {
 				rubik: ["Rubik", "sans-serif"],
