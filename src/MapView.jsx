@@ -28,7 +28,6 @@ const RecenterMap = ({ lat, lng }) => {
 
 const MapView = ({ coords }) => {
 	const { latitude, longitude, region } = coords;
-	console.log(latitude, longitude, region);
 	const position = [latitude || 7.3775, longitude || 3.947]; // fallback to Ibadan
 
 	return (

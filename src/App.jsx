@@ -2,12 +2,18 @@ import Header from "./Components/Header";
 import MapSection from "./Components/MapSection";
 import "leaflet/dist/leaflet.css";
 import { useState, useEffect } from "react";
+import getDefaultLocation from "./getDefaultLocation";
 
 function App() {
 	const [location, setLocation] = useState({});
-	const [ipAddress, setIpAddress] = useState("102.89.75.202");
+	const [ipAddress, setIpAddress] = useState("");
 
 	const apiKey = import.meta.env.VITE_API_KEY;
+
+	useEffect(() => {
+		const defaultLocation = getDefaultLocation();
+		// setLocation(defaultLocation);
+	}, []);
 
 	useEffect(() => {
 		async function fetchLocation() {
