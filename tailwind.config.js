@@ -8,6 +8,7 @@ export default {
 				screens: {
 					sm: "327px",
 					md: "427px",
+					lg: "1110px",
 				},
 			},
 			backgroundImage: {

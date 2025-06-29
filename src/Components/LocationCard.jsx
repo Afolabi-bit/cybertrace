@@ -6,10 +6,10 @@ const LocationCard = () => {
 	const { location, dataIsFetched } = useContext(AppContext);
 
 	return (
-		<div className="w-full h-[294px] bg-white rounded-[15px] shadow-soft absolute left-0 top-[167px] pt-[26px] md:top-[217px] md:h-[310px] z-10">
+		<div className="w-full h-[294px] bg-white rounded-[15px] shadow-soft absolute left-0 top-[167px] pt-[26px] md:top-[217px] md:h-[310px] z-10 lg:w-[1110px] lg:h-[161px]">
 			{!dataIsFetched && <InfoCardSkeleton />}
 			{dataIsFetched && (
-				<div>
+				<div className="lg:flex  justify-between lg:px-[32px] lg:py-[36px] ">
 					<div className="mb-[24px]">
 						<p className="font-bold text-[10px] leading-[12px] text-center tracking-[1.45833px] uppercase text-[#2C2C2C] mix-blend-normal text-opacity-50 mb-[7px]">
 							ip address
